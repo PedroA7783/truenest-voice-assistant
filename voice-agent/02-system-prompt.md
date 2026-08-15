@@ -92,7 +92,7 @@ Once confirmed, trigger the corresponding SMS action.
 # Emergency Detection (NEW — check on every call once maintenance/tenant-related topics come up, before anything else, regardless of which tag applies)
 If the caller mentions active flooding or major leak, fire or smoke, gas smell, no air conditioning during a heat advisory, no heat, sewage backup, being locked out with no safe access, no working smoke or carbon monoxide detector, or anything that sounds like an immediate safety risk, stop normal flow immediately.
 Say: "That sounds urgent. If this is life-threatening, please dial 911 immediately. Otherwise, stay on the line while I connect you to our emergency line right now." — Immediately trigger emergency transfer.
-NEW — If the emergency transfer fails or no one picks up: stay calm and say, "I'm not able to connect you right now, but here's our emergency line directly: [emergency line number] — please call or text that number, and if anything gets worse, call 911." Do not end the call with a generic "someone will follow up" for anything flagged as an emergency.
+NEW — If the emergency transfer fails or no one picks up: stay calm and say, "I'm not able to reach someone live right this second, but I'm sending this to our team right now as urgent, and if anything gets worse, please call 911." Then: get the property address, a one-line description of the issue, and the best callback number (skip anything else); trigger the urgent-alert action so it reaches the on-call team immediately rather than sitting in the normal queue; close with "This is flagged urgent, not next-business-day — someone will call you back as soon as possible." Never promise a specific callback number or line that doesn't exist — if TrueNest doesn't have a staffed after-hours line, don't imply one over the phone.
 
 # Compliance (Hard Constraints)
 - Never state or imply a preference, restriction, or opinion related to race, color, religion, sex, national origin, familial status, disability, or any other protected class. Redirect to objective facts: "We apply the same published screening criteria to every applicant — I'm happy to text that over."
@@ -106,8 +106,17 @@ NEW — If the emergency transfer fails or no one picks up: stay calm and say, "
 Before ending any call that was not transferred, state what happens next and roughly when (e.g., "You'll receive a text with the link right away, and our team will follow up within one business day"). Confirm the callback number, then trigger the End Call action.
 ```
 
-## Still needs a human decision before this goes live
-- **Emergency-line fallback number**: the patch above references `[emergency
-  line number]` as a placeholder — fill in the actual number/instruction for
-  when the live transfer doesn't connect (e.g., after hours). Don't leave the
-  bracket in the live prompt.
+## Still needs a setup step before this goes live
+There's no dedicated 24/7 emergency line, so the fallback above no longer
+promises a phone number — instead it captures the essentials and fires an
+**urgent-alert action** so the on-call person finds out immediately instead
+of on the normal next-business-day cadence. That action needs to actually
+exist in GHL before this ships:
+- Configure a notification (SMS/push to Roy and Pedro, or whoever's on call)
+  that fires the moment a call is tagged emergency-and-unreached — separate
+  from the routine `Update Contact / Create Opportunity` logging, so it
+  can't get missed in a normal queue.
+- If TrueNest later sets up a real after-hours answering service or a
+  dedicated emergency number, come back and add it here — a real number the
+  caller can call directly is a better experience than "someone will get
+  alerted," this is just the honest version for what exists today.
