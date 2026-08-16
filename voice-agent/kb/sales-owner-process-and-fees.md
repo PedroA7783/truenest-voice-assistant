@@ -1,4 +1,4 @@
-# Owner Sales: TrueNest Process & Fees (Full-Service Tier)
+# Owner Sales: TrueNest Process & Fees
 
 Used by Nora on Owner Lead calls (Routing §1). This is reference material —
 pull 2-3 relevant points per conversation based on what the caller told you
@@ -54,28 +54,50 @@ owner isn't juggling any of it directly.
    instead of the owner paying another full leasing commission on a new
    tenant.
 
-## Fees (full-service tier — used by about 95% of TrueNest's clients)
+## Three tiers
 
+TrueNest has three tiers: Basic, Full (the most common — used by about 95%
+of TrueNest's clients), and Premium. They share the same overall process
+above; what differs is the management fee rate/cap and, for Premium, an
+added coverage plan. Management fee is only ever charged when rent is
+actually collected — if rent isn't collected, no management fee that
+period, on any tier.
+
+### Full tier (most common — lead with this one)
 - **$99 one-time setup fee**, when the owner becomes a TrueNest client.
 - **Leasing service fee: 85% of the first month's rent** (a 15% discount off
-  the standard 100% — TrueNest's most common tier includes this discount).
-  Charged once, only when the tenant is approved, the lease is signed, and
-  keys/funds have exchanged.
-- **Property management fee: caps at $260/month once rent exceeds
-  $2,600/month.** Only charged when there's a tenant in place who is
-  actually paying rent — if rent isn't collected, no management fee is
-  charged that period. (The exact rate/amount for rent under $2,600/month
-  wasn't provided for this document — if a caller asks for that specific
-  number, don't guess; say a team member can confirm the exact figure and
-  offer to connect them with Pedro.)
+  the standard 100%). Charged once, only when the tenant is approved, the
+  lease is signed, and keys/funds have exchanged.
+- **Management fee: 9.9% of collected rent**, with a **$120/month minimum**
+  and a **$260/month maximum**.
 - **Lease renewal fee: $249 flat.**
 - No other fees. No hidden charges for handling HOA violations, contacting
   a tenant multiple times, or extra property visits — TrueNest considers
   all of that part of the job.
 
-These figures are for the full-service tier. TrueNest has two additional
-tiers — for exact details on those, point the caller to
-https://truenestpm.com/pricing or https://truenestpm.com/property-management-process.
+### Basic tier
+- **Management fee: 8% of collected rent**, with the same **$120/month
+  minimum** and **$260/month maximum** as the Full tier.
+- Setup fee, leasing fee, and renewal fee for this tier haven't been
+  confirmed for this document — if a caller on the Basic tier asks about
+  those, don't guess; say a team member can confirm and offer to connect
+  with Pedro, or point to https://truenestpm.com/pricing.
+
+### Premium tier
+- **Management fee: 11.9% of collected rent**, with a **$260/month
+  minimum** and a **$365/month maximum**.
+- Includes the **Landlord Protection Plan**, which covers three things:
+  1. **Rent default:** if the tenant stops paying rent, covered up to
+     **$3,000/month for up to 12 weeks**.
+  2. **Eviction costs:** reimbursed up to **$5,000** in eviction expenses.
+  3. **Malicious damage or theft:** covered up to **$35,000** if a tenant
+     damages or steals from the property.
+- Setup fee, leasing fee, and renewal fee for this tier haven't been
+  confirmed for this document — same guidance as Basic: don't guess, defer
+  to Pedro or https://truenestpm.com/pricing.
+
+For anything about Basic or Premium beyond what's above, point the caller
+to https://truenestpm.com/pricing or https://truenestpm.com/property-management-process.
 
 ## No lock-in
 

@@ -19,13 +19,15 @@ out once you've confirmed the four new docs retrieve correctly too. The
 four new docs don't have inline copies in the prompt; they exist only here.
 
 ## Owner sales
-- `sales-owner-process-and-fees.md` — full process walkthrough and the
-  full-service tier's fees. Pricing disclosure is now approved for this
-  document specifically (client's call — it's published on the website);
-  see `02-system-prompt.md`'s Compliance section for the exact scoping.
-  One open gap: the management fee's base rate for rent under $2,600/month
-  wasn't provided, only the $260 cap above that threshold — noted inline
-  in the doc as something to defer to Pedro until the client supplies it.
+- `sales-owner-process-and-fees.md` — full process walkthrough and fees for
+  all three tiers (Basic 8%, Full 9.9%, Premium 11.9%, each with its own
+  min/max), plus Premium's Landlord Protection Plan coverage. Pricing
+  disclosure is now approved for this document specifically (client's
+  call — it's published on the website); see `02-system-prompt.md`'s
+  Compliance section for the exact scoping. Remaining open gap: Basic and
+  Premium's setup/leasing/renewal fees weren't provided (only their
+  management fee rates were) — noted inline as something to defer to Pedro
+  or the website until supplied.
 - `sales-owner-faq.md` — the 9 standard owner questions/answers.
 
 ## Still to add
