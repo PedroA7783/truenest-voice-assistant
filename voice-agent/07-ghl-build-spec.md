@@ -113,14 +113,28 @@ the calendar Pedro actually uses for new-owner consultations.
 
 ## 6. Prospective Tenant flow — property listing docs
 
-Design is settled now (see prompt §6): Nora looks up the caller's property
-of interest in the Knowledge Base, answers from that specific listing's
-document, texts that property's own showing link, and — if the caller
-wants to move forward — transfers to whichever of the three agents
-(Scharisse/Noel/Pedro) is named as that listing's agent.
+Design is settled now (see prompt §6), adapted from a proven pattern Pedro
+already runs on his own HousebyPedro listings:
+
+- **Realtor/Agent callers:** Nora answers property questions from the
+  matching listing document, points showing requests to "the MLS listing
+  instructions for this property" (not a specific named tool), and routes
+  commission questions to that listing's assigned agent.
+- **Unrepresented prospective tenants:** Nora runs a one-question-at-a-time
+  prequalification interview (move-in date, household size/income, credit
+  range, eviction/criminal history, co-signer need, move-in funds, pets),
+  compares it against that property's specific criteria from its document,
+  and — regardless of fit — never declares approval, denial, or "not a
+  match." Good fit → texts that property's self-service showing link. Poor
+  fit → neutral self-assessment framing, still invites them to apply.
+- Either path, once ready to move forward: transfers to whichever of the
+  three agents (Scharisse/Noel/Pedro) is named as that listing's agent.
 
 What's still needed to actually go live on this: Scharisse, Noel, and
 Pedro adding their current active listings as Knowledge Base docs using
-`kb/_property-listing-template.md`'s format. Until at least a few listings
-exist in the KB, this flow has nothing to retrieve — worth testing with a
-couple of real listings uploaded before relying on it in production.
+`kb/_property-listing-template.md`'s format — including the
+prequalification-criteria fields, which are new to this template version
+and need filling in per property, not left blank. Until at least a few
+listings exist in the KB, this flow has nothing to retrieve — worth
+testing with a couple of real listings uploaded before relying on it in
+production.

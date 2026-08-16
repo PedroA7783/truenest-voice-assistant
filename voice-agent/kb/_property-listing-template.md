@@ -5,6 +5,11 @@ Copy this format for each active listing. One document per property.
 Nora will confidently tell callers a property is available based on
 whatever's in here, so an outdated doc is worse than no doc at all.
 
+Field set adapted from a proven format Pedro already runs on his own
+HousebyPedro listings — the qualification-criteria fields in particular
+are what let Nora run a real prequalification conversation instead of a
+generic one.
+
 Filename convention: `listing-[street-address-slug].md` (e.g.
 `listing-123-oak-st-davie.md`) so agents can find their own listings
 easily in the KB.
@@ -12,22 +17,51 @@ easily in the KB.
 ---
 
 ```
-# Listing: [Full property address]
+# Listing: [Full address, including unit number]
 
 **Status:** Available
 **Listing Agent:** [Scharisse Moreno / Noel Cuarezma / Pedro Andrade]
 **Agent Phone:** [their number, for reference]
 
+## Basics
+**Bedrooms / Bathrooms:**
+**Availability:** [e.g. Ready now / Available MM-DD-YYYY]
 **Rent:** $[amount]/month
-**Bedrooms / Bathrooms:** [e.g. 3 bed / 2 bath]
-**Available From:** [date]
-**Pet Policy:** [e.g. cats and dogs under 30lbs, $300 pet deposit]
-**HOA Community:** [yes/no — if yes, note any HOA-specific requirements]
+**Minimum Lease Term:** [e.g. 1 year]
+**Smoking:** [policy]
+**Parking:** [details]
+**Community / Amenities:**
 
-**Showing Link:** [property-specific scheduling link]
-**Application Link:** [property-specific or general application link]
+## Money to move in
+**Security Deposit:**
+**Move-in Total:** [e.g. first month + deposit — spell out the math]
+**Application Fee:** [e.g. $50 per adult 18+]
+**Application Turnaround:** [e.g. 5 business days after all documents received]
 
-**Highlights:** [2-3 short bullet points — what makes this one stand out]
+## What's included
+**Included in rent:** [e.g. water, sewer, trash, pest control, pool]
+**Tenant pays:** [e.g. electric, cable, internet]
+
+## HOA (if applicable)
+**HOA:** [none / application required / fee + rules acknowledgment, etc.]
+
+## Prequalification criteria for THIS property
+**Minimum Credit Score:**
+**Income Requirement:** [e.g. 2.5x monthly rent]
+**Criminal History:** [accepted / not accepted]
+**Eviction History:** [accepted / not accepted]
+**Co-signers:** [accepted / not accepted]
+**Pet Policy:** [e.g. allowed with breed/weight restrictions]
+**Pet Fee:**
+
+## Links
+**Showing Link:** [property-specific self-service scheduling link]
+**Application Link:**
+
+## Features (marketing highlights — keep short, Nora won't read the whole list)
+-
+-
+-
 
 **Last Updated:** [date]
 ```
@@ -43,5 +77,8 @@ easily in the KB.
 - **Listing Agent** must be one of the three names Nora has transfer
   actions configured for (Scharisse, Noel, Pedro) — a name that doesn't
   match one of those won't have anywhere for the call to transfer to.
-- Keep the **Highlights** section short — Nora is instructed to share
-  information conversationally, not read the whole document back.
+- The **prequalification criteria** fields are what Nora compares an
+  unrepresented prospect's answers against — fill them in per-property
+  since they can vary listing to listing, don't leave them blank.
+- Keep **Features** short — Nora is instructed to share information
+  conversationally, not read the whole document back.
