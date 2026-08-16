@@ -18,7 +18,16 @@ docs. The first three still have matching inline copies in
 out once you've confirmed the four new docs retrieve correctly too. The
 four new docs don't have inline copies in the prompt; they exist only here.
 
+## Owner sales
+- `sales-owner-process-and-fees.md` — full process walkthrough and the
+  full-service tier's fees. Pricing disclosure is now approved for this
+  document specifically (client's call — it's published on the website);
+  see `02-system-prompt.md`'s Compliance section for the exact scoping.
+  One open gap: the management fee's base rate for rent under $2,600/month
+  wasn't provided, only the $260 cap above that threshold — noted inline
+  in the doc as something to defer to Pedro until the client supplies it.
+- `sales-owner-faq.md` — the 9 standard owner questions/answers.
+
 ## Still to add
-- Owner Pitch Talking Points (sales content for the Owner Lead flow)
 - Any further troubleshooting scripts as they come up (garage/gate remote,
   fridge not cooling, washer/dryer issues, etc.)
