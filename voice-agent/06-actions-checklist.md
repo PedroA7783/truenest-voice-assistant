@@ -40,12 +40,14 @@ Checked against a screenshot of the live builder's Actions tab (2026-08-15).
   so the Emergency Escalation Webhook/SMS alert is doing the job a real
   after-hours line would otherwise do — see `02-system-prompt.md`'s
   "Still needs a setup step" section.
-- **Three troubleshooting scripts are approved so far: AC not cooling,
-  clogged toilet, unresponsive thermostat.** The prompt is written to refuse
-  to improvise steps for any other issue type (garbage disposal, no hot
-  water, tripped breaker/dead outlet, smoke detector chirping, garage/gate
-  remote, fridge not cooling, etc.) and go straight to Roy instead — those
-  are the next most common candidates by call volume if you want to keep
-  expanding this list; the client needs to supply or approve the actual
-  safe steps for each, since the agent shouldn't be inventing DIY advice on
-  its own.
+- **Seven troubleshooting scripts are approved now: AC not cooling, clogged
+  toilet, unresponsive thermostat, garbage disposal jammed, tripped
+  breaker/dead outlet, smoke/CO detector chirping, and no hot water.** The
+  first three live both inline in the prompt and as Knowledge Base docs
+  (`voice-agent/kb/`); the other four exist only in the Knowledge Base —
+  retrieval for the first three is confirmed working via a real test call
+  (2026-08-16), the other four still need the same confirmation. The prompt
+  is written to refuse to improvise steps for any issue type not covered by
+  either the inline scripts or a Knowledge Base doc, and go straight to Roy
+  instead. Next candidates by call volume if you want to keep expanding:
+  garage/gate remote, fridge not cooling, washer/dryer issues.
