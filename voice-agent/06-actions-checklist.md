@@ -40,9 +40,12 @@ Checked against a screenshot of the live builder's Actions tab (2026-08-15).
   so the Emergency Escalation Webhook/SMS alert is doing the job a real
   after-hours line would otherwise do — see `02-system-prompt.md`'s
   "Still needs a setup step" section.
-- **The AC troubleshooting script is the only approved one right now.** The
-  prompt is written to refuse to improvise steps for any other issue type
-  (garbage disposal, no hot water, appliance not powering on, etc.) and go
-  straight to Roy instead — if you want the agent to troubleshoot those too,
-  the client needs to supply the actual safe/approved steps for each, since
-  the agent shouldn't be inventing DIY advice on its own.
+- **Three troubleshooting scripts are approved so far: AC not cooling,
+  clogged toilet, unresponsive thermostat.** The prompt is written to refuse
+  to improvise steps for any other issue type (garbage disposal, no hot
+  water, tripped breaker/dead outlet, smoke detector chirping, garage/gate
+  remote, fridge not cooling, etc.) and go straight to Roy instead — those
+  are the next most common candidates by call volume if you want to keep
+  expanding this list; the client needs to supply or approve the actual
+  safe steps for each, since the agent shouldn't be inventing DIY advice on
+  its own.
