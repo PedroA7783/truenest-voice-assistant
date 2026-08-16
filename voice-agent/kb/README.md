@@ -30,6 +30,16 @@ four new docs don't have inline copies in the prompt; they exist only here.
   or the website until supplied.
 - `sales-owner-faq.md` — the 9 standard owner questions/answers.
 
+## Property listings (Prospective Tenant flow)
+- `_property-listing-template.md` — the format for every active listing.
+  Scharisse, Noel, and Pedro (the three leasing agents) each own their own
+  listings and are responsible for adding a doc when a property goes
+  active and removing/updating it the same day it's rented — see the
+  template's notes for why that matters so much for a voice agent.
+- Actual listing docs get added here as `listing-[address-slug].md`, one
+  per property, once agents start uploading them.
+
 ## Still to add
 - Any further troubleshooting scripts as they come up (garage/gate remote,
   fridge not cooling, washer/dryer issues, etc.)
+- Property listing docs, as agents add them

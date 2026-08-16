@@ -1,6 +1,6 @@
 # GHL Build Spec — exact configuration for every action
 
-Matched against the current prompt (`02-system-prompt.md`) and the 9
+Matched against the current prompt (`02-system-prompt.md`) and the
 Knowledge Base docs in `voice-agent/kb/`. `{{ }}` marks a value still
 needed.
 
@@ -8,29 +8,36 @@ needed.
 
 | Name | Role | Phone | Email |
 |---|---|---|---|
-| Pedro | Business Development (BDM) | 954-406-0400 | pedro@truenestpm.com |
-| Roy Maldonado | Maintenance Lead | +1 954-278-7193 | roy@truenestpm.com |
+| Pedro Andrade | Business Development (Owner Lead calls) **and** one of three leasing agents (Prospective Tenant calls) | 954-406-0400 | pedro@truenestpm.com |
+| Roy Maldonado | Maintenance Lead (sole emergency contact) | +1 954-278-7193 | roy@truenestpm.com |
 | Christine | Screening | +1 954-361-9361 | christine@truenestpm.com |
-| Diego Binetti | Operations | +1 954-787-7077 | diego@truenestpm.com |
+| Diego Binetti | Owner of TrueNest — handles Current Owner payment/ops questions | +1 954-787-7077 | diego@truenestpm.com |
+| Scharisse Moreno | Leasing agent | +1 754-316-9815 | scharisse@truenestpm.com |
+| Noel Cuarezma | Leasing agent | +1 754-777-0353 | noelsellsrealestate@gmail.com |
 
-Note on spelling: written as "Cristine" once and "Christine" every other
-time across our conversation — using "Christine" throughout since that's
-been consistent; flag if that's actually wrong.
-
-**Diego isn't wired into any flow yet** — he was given as a contact but no
-role in the call routing was specified. Is he meant to be a backup/escalation
-contact somewhere (e.g. Operations backstop if Roy doesn't answer an
-emergency), or just FYI contact info for now? Not assuming either way.
+Note on spelling: "Christine" used throughout (was written "Cristine"
+once) — flag if that's actually wrong.
 
 **Hard rule, confirmed by the client: Pedro is never looped into
-maintenance or repairs — no notifications, no reports, no escalation path
-through him for anything maintenance-related.** This overrides my earlier
-suggestion of "Roy + Pedro" for the emergency escalation alert — corrected
-below to Roy only.
+maintenance or repairs** — no notifications, no reports, no escalation
+path through him for anything maintenance-related. Emergency escalation
+goes to Roy only.
+
+**Diego's role, confirmed:** transferred (or offered his check-in link,
+https://calendly.com/truenest/check-in, as fallback) specifically when
+existing owners call about payments or operations questions on their
+properties. Not wired into anything else.
+
+**Leasing agents, confirmed:** Scharisse, Noel, and Pedro each manage
+their own listings and are responsible for adding/removing their own
+Knowledge Base docs as availability changes (see §6 below and
+`kb/_property-listing-template.md`). Which agent Nora transfers to for a
+given property is read from that property's specific listing document,
+not fixed per call type.
 
 ## 0. Knowledge Base — verify first
 
-Confirm all 9 docs are uploaded to "Truenest Knowledge Data" and none are
+Confirm these are uploaded to "Truenest Knowledge Data" and none are
 stale duplicates:
 - `maintenance-ac-not-cooling.md`
 - `maintenance-clogged-toilet.md`
@@ -43,17 +50,19 @@ stale duplicates:
   single-tier version, delete that upload first**, then upload the current
   3-tier version, so the KB doesn't have two conflicting fee documents.
 - `sales-owner-faq.md`
+- Property listing docs, as Scharisse/Noel/Pedro add them, following
+  `_property-listing-template.md`'s format
 
-Per-property listing docs are a planned addition — see the note at the
-bottom of this file before building those.
-
-## 1. Transfer Call actions (4)
+## 1. Transfer Call actions (7)
 
 | Action name | Destination | Notes |
 |---|---|---|
-| Transfer to Pedro | 954-406-0400 | Owner Lead §1 — only fires when caller explicitly insists on talking to Pedro live; default path is booking, not this |
+| Transfer to Pedro | 954-406-0400 | Owner Lead §1 (only if caller insists on talking to Pedro live) — reused for Prospective Tenant §6 when Pedro is the listing's assigned agent |
 | Transfer to Roy | +1 954-278-7193 | Maintenance §3, after troubleshooting doesn't resolve it |
 | Transfer to Christine | +1 954-361-9361 | Screening §5 |
+| Transfer to Diego | +1 954-787-7077 | Current Owner §2, payment/ops questions |
+| Transfer to Scharisse | +1 754-316-9815 | Prospective Tenant §6, when Scharisse is the listing's assigned agent |
+| Transfer to Noel | +1 754-777-0353 | Prospective Tenant §6, when Noel is the listing's assigned agent |
 | Emergency Transfer | +1 954-278-7193 (Roy) | Same number as "Transfer to Roy," configured as its own separate action so a failed emergency transfer stays distinguishable from a failed routine one in reporting/logs |
 
 ## 2. Internal Notification actions (3) — not caller-facing SMS
@@ -62,7 +71,7 @@ bottom of this file before building those.
 |---|---|---|---|
 | Internal Notification – Roy | +1 954-278-7193 (SMS) or roy@truenestpm.com | Alongside every Transfer to Roy, regardless of pickup | `Maintenance call from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) — [issue description]. Troubleshooting already tried: [what was attempted, or "none"].` |
 | Internal Notification – Christine | +1 954-361-9361 (SMS) or christine@truenestpm.com | Alongside every Transfer to Christine, regardless of pickup | `Screening inquiry from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) about [property applied for].` |
-| Emergency Escalation Webhook/SMS Alert | **Roy only** — +1 954-278-7193 and/or roy@truenestpm.com. Not Pedro, per the client's hard rule above. | Only when Emergency Transfer (above) fails to connect | `URGENT — unreached emergency call. {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) at [property address]: [issue description]. Not next-business-day — needs immediate callback.` |
+| Emergency Escalation Webhook/SMS Alert | **Roy only** — +1 954-278-7193 and/or roy@truenestpm.com. Not Pedro. | Only when Emergency Transfer (above) fails to connect | `URGENT — unreached emergency call. {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) at [property address]: [issue description]. Not next-business-day — needs immediate callback.` |
 
 The bracketed `[issue description]` / `[what was attempted]` fields are
 what the prompt has Nora capture in conversation right before firing each
@@ -77,7 +86,8 @@ notification fires.
 |---|---|---|
 | Send SMS – Owner Process & Consultation | Owner Lead §1 fallback (Pedro unavailable / no time works) | `Hi {{contact.first_name}}, thanks for your interest in TrueNest! Here's more on our process: https://truenestpm.com/property-management-process — and you can grab time with Pedro here: https://calendly.com/truenestpm/consultation` |
 | Send SMS – Tenant Portal | Maintenance §3 fallback, all of Tenant Support §4 | `Hi {{contact.first_name}}, here's your TrueNest Resident Portal: https://truenestpm.com/tenants` |
-| Send SMS – Showing & Application | Prospective Tenant §6 | Per-property — see below, this is being redesigned around per-listing Knowledge Base docs rather than a single static link |
+| Send SMS – Diego Check-in Link | Current Owner §2 fallback (Diego unavailable) | `Hi {{contact.first_name}}, here's Diego's check-in link to grab time with him directly: https://calendly.com/truenest/check-in` |
+| Send SMS – Property Showing/Application | Prospective Tenant §6 | Content is dynamic per property — pulled from whichever listing document matched the call, not a single fixed link. If your builder needs a static fallback message wrapper, something like: `Hi {{contact.first_name}}, here's the info for [address]: showing — [showing link], apply — [application link]` |
 
 Every SMS action should be preceded by Nora's spoken confirmation per the
 prompt's SMS Confirmation Protocol ("Is this mobile number the best place
@@ -101,20 +111,16 @@ tags.
 One Appointment Booking action already exists. Confirm it's pointed at
 the calendar Pedro actually uses for new-owner consultations.
 
-## 6. Prospective Tenant flow — being redesigned, not final yet
+## 6. Prospective Tenant flow — property listing docs
 
-The client's proposal: add each active property as its own Knowledge Base
-document (so Nora can answer property-specific questions and pull that
-property's actual showing link, since every listing has its own), then
-transfer to a leasing agent once a caller is ready to move forward and
-rent. See the chat response for the design discussion and open questions
-(who the leasing agent is, and how listing docs get kept in sync when a
-property is rented or a new one comes on). Don't build §6's actions until
-that's settled — reusing the current single static "Showing & Application"
-link would work against a design that's about to change.
+Design is settled now (see prompt §6): Nora looks up the caller's property
+of interest in the Knowledge Base, answers from that specific listing's
+document, texts that property's own showing link, and — if the caller
+wants to move forward — transfers to whichever of the three agents
+(Scharisse/Noel/Pedro) is named as that listing's agent.
 
-## Still open before this is fully wired up
-- Diego's role, if any, in the call routing
-- Leasing agent's name and direct number, once decided (see §6)
-- How per-property Knowledge Base docs will be created and kept current
-  (see §6 / chat discussion)
+What's still needed to actually go live on this: Scharisse, Noel, and
+Pedro adding their current active listings as Knowledge Base docs using
+`kb/_property-listing-template.md`'s format. Until at least a few listings
+exist in the KB, this flow has nothing to retrieve — worth testing with a
+couple of real listings uploaded before relying on it in production.
