@@ -28,23 +28,7 @@ stale duplicates:
 | Transfer to Pedro | {{Pedro's direct number}} | Owner Lead §1 — only fires when caller explicitly insists on talking to Pedro live; the default path is booking, not this |
 | Transfer to Roy | {{Roy's direct number}} | Maintenance §3, after troubleshooting doesn't resolve it |
 | Transfer to Christine | {{Christine's direct number}} | Screening §5 |
-| Emergency Transfer | {{see question below}} | Universal Emergency Protocol — needs its own decision, see below |
-
-**Open question — where should Emergency Transfer actually ring?** You
-told me earlier there's no dedicated 24/7 emergency line. Most of the
-emergency-list items (flooding, gas smell, no A/C, no heat, sewage
-backup, lockout, smoke/CO detector) are maintenance-domain, so Roy is the
-obvious first attempt — but if this action rings the exact same number as
-"Transfer to Roy," a failed emergency transfer and a failed routine
-maintenance transfer become indistinguishable to the fallback logic. Two
-ways to fix that, your call:
-1. Point Emergency Transfer at Roy's number too, but make it a **separate
-   action** in the builder (same number, different action name) — GHL
-   still logs which one fired, so reporting stays clean even though the
-   phone that rings is the same.
-2. Point it at a different number entirely (Pedro's cell, or a shared
-   on-call line) if you want emergencies to reach someone other than Roy
-   first.
+| Emergency Transfer | {{Roy's direct number}} | Universal Emergency Protocol — **decided:** rings Roy's same number as "Transfer to Roy," but configured as its own separate action in the builder (not reused), so a failed emergency transfer stays distinguishable from a failed routine maintenance transfer in reporting/logs even though the phone that rings is the same. |
 
 ## 2. Internal Notification actions (3) — not caller-facing SMS
 
@@ -52,7 +36,7 @@ ways to fix that, your call:
 |---|---|---|---|
 | Internal Notification – Roy | {{Roy's phone/email for SMS or push}} | Alongside every Transfer to Roy, regardless of pickup | `Maintenance call from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) — [issue description]. Troubleshooting already tried: [what was attempted, or "none"].` |
 | Internal Notification – Christine | {{Christine's phone/email}} | Alongside every Transfer to Christine, regardless of pickup | `Screening inquiry from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) about [property applied for].` |
-| Emergency Escalation Webhook/SMS Alert | {{who should get this — Roy? Roy + Pedro?}} | Only when Emergency Transfer (above) fails to connect | `URGENT — unreached emergency call. {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) at [property address]: [issue description]. Not next-business-day — needs immediate callback.` |
+| Emergency Escalation Webhook/SMS Alert | Suggested: **Roy + Pedro both**, since Roy already didn't pick up the direct call — worth confirming, not decided the way Emergency Transfer's destination was | Only when Emergency Transfer (above) fails to connect | `URGENT — unreached emergency call. {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) at [property address]: [issue description]. Not next-business-day — needs immediate callback.` |
 
 The bracketed `[issue description]` / `[what was attempted]` fields are
 what the prompt has Nora capture in conversation right before firing each
@@ -103,6 +87,5 @@ instead, not a direct booking action, per the prompt as written).
 
 ## Still open before this is fully wired up
 - Pedro's, Roy's, and Christine's direct numbers
-- Emergency Transfer's destination decision (see §1)
-- Who receives the Emergency Escalation alert (see §2)
+- Confirm the Emergency Escalation alert should go to Roy + Pedro (see §2)
 - The Showing & Application SMS's actual URL(s) (see §3)
