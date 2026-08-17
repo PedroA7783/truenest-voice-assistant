@@ -55,7 +55,7 @@ easily in the KB.
 **Pet Fee:**
 
 ## Links
-**Showing Link:** [property-specific self-service scheduling link]
+**Showing Link:** [this listing's assigned agent's own showing/onsite calendar booking link — Pedro, Noel, and Scharisse each use their own, matching whichever of them is the Listing Agent above]
 **Application Link:**
 
 ## Features (marketing highlights — keep short, Nora won't read the whole list)

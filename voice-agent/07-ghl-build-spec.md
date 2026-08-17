@@ -110,10 +110,17 @@ tags.
 
 Calendar: **Property Management Consultation - TrueNest** (30 min, Active,
 owned by Pedro Andrade) — confirmed correct via a real test booking
-already on it. A second calendar, "Onsite Consultation - Pedro Andrade"
-(1 hr), also exists in the same group — TBD whether that's a distinct
-later-stage in-person step (no action needed) or a duplicate worth
-deactivating to avoid ambiguity.
+already on it.
+
+**Resolved:** "Onsite Consultation - Pedro Andrade" is unrelated to this
+flow, not a duplicate — it's Pedro's own property-showing calendar for
+Prospective Tenant §6, used only on listings where he's the assigned
+agent (Noel and Scharisse each handle their own showings the same way on
+listings assigned to them, per the client). That calendar is what each
+listing's "Showing Link" should point to when Pedro is that property's
+agent — separate purpose entirely from the Owner Lead consultation
+calendar above. No cleanup needed, no scheduling window change needed
+either (3 days confirmed sufficient given current booking volume).
 
 **Advanced Options, as configured:**
 - Collect: Email ✓ (already recommended), Phone number ✓, Full name ✓
