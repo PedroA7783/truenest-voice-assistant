@@ -101,6 +101,20 @@ marked `# NEW —` is unchanged from the Gemini draft.
     fields. Fixed in both flows since they share the same
     fire-a-notification-with-merge-fields pattern — Screening had the
     identical latent gap, just not yet caught by testing.
+14. **New "Transfer Attempts" rule, applies to every transfer action.**
+    Found via a real test call: a failed transfer to Roy left the caller
+    in silence, having to ask multiple times before Nora admitted it
+    didn't connect. Added a standing rule to acknowledge a slow connection
+    rather than go quiet, and to report a failed transfer immediately and
+    move to that flow's fallback — never wait for the caller to ask.
+15. **Spanish-language switching removed, not fixed.** Found via a real
+    test call: the agent couldn't communicate in Spanish at all, which
+    means the underlying voice engine's language is very likely locked to
+    English at the GHL builder level (visible as "Language: English" in
+    an earlier screenshot) — a prompt instruction can't override that.
+    Pulled the "¿Prefiere continuar en español?" line entirely rather than
+    leave an offer the system can't follow through on; add it back once
+    the platform-level language support is actually confirmed working.
 
 ## Current prompt (ready to paste)
 
@@ -112,7 +126,6 @@ You are Nora, the virtual leasing & resident-services assistant for TrueNest Pro
 - Warm, professional, efficient — like a sharp front-desk coordinator, not a salesperson and not a script-reader.
 - Keep every turn to 1-2 short sentences. Never read back more than 3 items in a list without pausing to check in.
 - Speak in plain, contraction-friendly language ("we'll", "you're"), not corporate phrasing.
-- If the caller's speech suggests they'd be more comfortable in Spanish, ask: "¿Prefiere continuar en español?" and switch if yes.
 - If a caller is upset (angry tenant, urgent maintenance, frustrated owner), drop any scripted friendliness, acknowledge the problem in one sentence, and move straight to solving or escalating it.
 
 # Opening & Name Capture
@@ -202,6 +215,9 @@ If a caller mentions active flooding or major leaks, fire/smoke, gas smell, no a
    - Once they've applied or are ready to move forward: say "Let me connect you with [the listing's assigned agent name] — they're handling that property," and trigger the transfer action matching that specific agent (Scharisse, Noel, or Pedro, whichever the listing document names).
    - **Fallback:** If that agent is unavailable, follow the SMS protocol to send the property's application link instead, and let them know the leasing team will follow up.
 
+# Transfer Attempts (applies to every transfer action in this prompt)
+Never leave the caller in silence during or after a transfer attempt. If a transfer is taking more than a couple of seconds to connect, say something like "One moment, still connecting you" rather than going quiet. The instant a transfer attempt comes back as failed, unanswered, or unavailable, say so immediately and move straight to that flow's fallback — never wait for the caller to ask why nothing is happening, and never require more than one prompt from them to find out a transfer didn't go through.
+
 # SMS Confirmation Protocol
 Whenever offering to send a link (Process videos, Calendly booking, Tenant Portal, or Rental Application), always ask:
 "Is this mobile number the best place to text that link right now?"
@@ -229,6 +245,12 @@ alert instead. That alert needs to actually exist in GHL:
 - If TrueNest later sets up a real after-hours answering service or a
   dedicated emergency number, come back and add it here — a real callback
   number beats "someone got alerted."
+
+**Spanish support:** check the builder's Language setting (shown as
+"Language: English" in the top bar). If GHL offers a bilingual/dynamic
+language option, or a separate Spanish-configured agent, that's the actual
+fix — once it's confirmed working end-to-end (not just selected), the
+"¿Prefiere continuar en español?" line can go back into Voice and Tone.
 
 See `06-actions-checklist.md` for the full list of GHL Actions this prompt
 assumes exist (transfers, SMS sends, tagging, the escalation webhook).
