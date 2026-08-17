@@ -69,8 +69,8 @@ stale duplicates:
 
 | Action name | Destination | Fires | Suggested message template |
 |---|---|---|---|
-| Internal Notification – Roy | +1 954-278-7193 (SMS) or roy@truenestpm.com | Alongside every Transfer to Roy, regardless of pickup | `Maintenance call from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) — [issue description]. Troubleshooting already tried: [what was attempted, or "none"].` |
-| Internal Notification – Christine | +1 954-361-9361 (SMS) or christine@truenestpm.com | Alongside every Transfer to Christine, regardless of pickup | `Screening inquiry from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) about [property applied for].` |
+| Internal Notification – Roy | +1 954-278-7193 (SMS) or roy@truenestpm.com | Alongside every Transfer to Roy, regardless of pickup | `Maintenance call from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}, {{contact.email}}) — [issue description]. Troubleshooting already tried: [what was attempted, or "none"].` |
+| Internal Notification – Christine | +1 954-361-9361 (SMS) or christine@truenestpm.com | Alongside every Transfer to Christine, regardless of pickup | `Screening inquiry from {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}, {{contact.email}}) about [property applied for].` |
 | Emergency Escalation Webhook/SMS Alert | **Roy only** — +1 954-278-7193 and/or roy@truenestpm.com. Not Pedro. | Only when Emergency Transfer (above) fails to connect | `URGENT — unreached emergency call. {{contact.first_name}} {{contact.last_name}} ({{contact.phone}}) at [property address]: [issue description]. Not next-business-day — needs immediate callback.` |
 
 The bracketed `[issue description]` / `[what was attempted]` fields are
@@ -79,6 +79,14 @@ action — if your builder supports passing a captured variable into the
 message template, wire it there; otherwise these need to be fields Nora
 fills via an Update Contact Field-style action immediately before the
 notification fires.
+
+**Found via a real test call:** Nora was asking for the property address
+on a maintenance call but never asking for the caller's own name/phone/
+email, so `{{contact.first_name}}` etc. could go out blank in the
+notification above if the caller wasn't already a matched CRM contact.
+Fixed in the prompt for both Maintenance (§3) and Screening (§5) — same
+underlying pattern in both, so both got the fix, not just the one that
+happened to get caught in testing.
 
 ## 3. Send SMS actions (caller-facing)
 
