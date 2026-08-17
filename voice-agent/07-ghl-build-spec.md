@@ -106,10 +106,28 @@ Distinct from the 4 field-extraction actions already configured
 (First Name / Last Name / Email / Phone) — nothing currently applies these
 tags.
 
-## 5. Appointment Booking — confirm, don't rebuild
+## 5. Appointment Booking — confirmed working
 
-One Appointment Booking action already exists. Confirm it's pointed at
-the calendar Pedro actually uses for new-owner consultations.
+Calendar: **Property Management Consultation - TrueNest** (30 min, Active,
+owned by Pedro Andrade) — confirmed correct via a real test booking
+already on it. A second calendar, "Onsite Consultation - Pedro Andrade"
+(1 hr), also exists in the same group — TBD whether that's a distinct
+later-stage in-person step (no action needed) or a duplicate worth
+deactivating to avoid ambiguity.
+
+**Advanced Options, as configured:**
+- Collect: Email ✓ (already recommended), Phone number ✓, Full name ✓
+- Not collected: Address (this calendar isn't an in-person appointment)
+- Notes ✓ — carries the property address/unit count/occupancy status Nora
+  already gathered during qualification, so Pedro has context before the
+  call (prompt updated to actually populate this)
+- Scheduling window: 3 days ahead, 1h buffer — worth confirming with Pedro
+  that 3 days usually has open slots; tighten/loosen if his calendar tends
+  to fill up
+- Cancel appointment ✓, Reschedule appointment ✓ — prompt updated so Nora
+  actually uses these for an existing consultation instead of just taking
+  a message, which had no coverage before this was discovered
+- Auto-confirm appointments ✓ (already correct)
 
 ## 6. Prospective Tenant flow — property listing docs
 
