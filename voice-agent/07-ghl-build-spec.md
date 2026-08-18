@@ -144,6 +144,15 @@ either (3 days confirmed sufficient given current booking volume).
   a message, which had no coverage before this was discovered
 - Auto-confirm appointments ✓ (already correct)
 
+**Found via a real test booking:** the appointment landed in Pedro's
+calendar with the contact name saved as a generic placeholder ("Guest
+Visitor 003") while email and phone came through as real values. That
+pattern points at the Full Name checkbox above possibly not actually
+being checked/saved (email/phone clearly were collected, name wasn't) —
+**go back into this action and confirm Full Name is really toggled on**,
+not just recommended. The prompt also now has its own check for a real
+name before triggering this action, as a second layer.
+
 ## 6. Prospective Tenant flow — property listing docs
 
 Design is settled now (see prompt §6), adapted from a proven pattern Pedro
