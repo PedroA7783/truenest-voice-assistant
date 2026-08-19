@@ -34,25 +34,48 @@ explicitly says not interested / asks to stop.
 | Day 10 | Soft close, not a hard push — "Just want to make sure this doesn't get lost — let us know if you'd like to pick this back up, or if now's not the right time we'll check in again down the road." |
 | Day ~75 (re-engagement) | One longer-horizon touch — "Circling back in case timing's better now: [link]" — then exit the workflow either way |
 
-**Open items before building this:**
-- Confirm the cadence above (2hrs/2d/5d/10d/75d) matches how aggressively
-  vs. gently you want to pursue these — easy to adjust once it's live.
-- Decide if Days 2 and 5's message content should rotate through a fixed
-  set you write once, or if you want me to draft several variants to
-  rotate through so repeat leads don't get the identical text on a second
-  pass through the funnel.
+**Superseded, pending real input:** the client's own current process is
+near-daily text + call follow-up for 8-10 days, then a handoff into a
+separate longer-term nurture — already built and running today in
+LeadSimple. The cadence above was a reasonable-guess starting point before
+that was known; screenshots of the actual LeadSimple workflow are coming,
+and the real redesign will replace this table rather than tweak it —
+keeping this version here only until that lands.
 
-## Workflow 2 — Onboarding Data Collection (pending: who runs this?)
+**Explicit goals for the redesign, per the client:** work in real sales
+psychology / mental-triggers, be "aggressive yet professional," and
+optimize for converting to a booked call as fast as possible — while
+staying inside a compliant SMS/call cadence (a working opt-out, and
+honoring it immediately — see the TCPA note below).
 
-**Why:** Once an owner signs on, someone needs to collect account/mailing
-address/HOA/contact details — and owners are often slow to respond, so
-this needs the same kind of persistent multi-touch follow-up as Workflow 1.
+**TCPA consideration — build this in, don't bolt it on later.** Near-daily
+text and call contact for over a week is squarely in TCPA territory
+(federal law governing repeated marketing contact), and violations carry
+per-message statutory damages. Whatever the redesigned cadence ends up
+being needs: a real "reply STOP to opt out" mechanism that's actually
+wired to stop the workflow (not just printed as a courtesy line), and
+immediate compliance if a lead says stop contacting them in any form
+(text, call, or verbally to Pedro) — not just via the literal STOP
+keyword. This constrains "aggressive," it doesn't rule it out.
 
-**Blocked on:** confirming who this is assigned to — the client referenced
-a name ("Nessid") that doesn't match anyone established in this build
-(Pedro, Roy, Christine, Diego, Scharisse, Noel). Not designing the
-trigger/sequence until that's confirmed, since assigning this to the
-wrong person is a real error, not just a placeholder to fix later.
+## Workflow 2 — Onboarding Data Collection (owner confirmed, cadence TBD)
+
+**Owner: Neser Gumana** — neser@truenestpm.com, +1 954-787-7078. Contacts
+new owners once they sign on to collect account, mailing address, HOA,
+and contact information. Note: his number is one digit off Diego
+Binetti's (+1 954-787-7077) — be precise when this gets built so nothing
+gets crossed between the two.
+
+**Why:** Same underlying problem as Workflow 1 — new clients are often
+slow to respond, so this needs persistent multi-touch follow-up rather
+than a single request that goes unanswered.
+
+**Not fully designed yet** — the person is confirmed, but exact cadence,
+what specifically needs collecting (beyond account/mailing/HOA/contact
+info), and what channel Neser prefers (text, call, email) still need your
+input before this is buildable. Reasonable next step once you're ready:
+same treatment as Workflow 1 — either describe how Neser currently
+handles this, or share it if it's also captured in LeadSimple.
 
 ## Workflow 3 — Screening Follow-Up During the 5-Business-Day Window (not yet scoped)
 
